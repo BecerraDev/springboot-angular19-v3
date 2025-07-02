@@ -1,32 +1,33 @@
-// src/app/auth.interceptor.ts
-import { Injectable } from '@angular/core';
-import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpHandler,
-  HttpEvent
-} from '@angular/common/http';
-import { Observable, from } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { KeycloakService } from 'keycloak-angular';
+// src/app/app.config.ts
+import { ApplicationConfig } from '@angular/core';
+import { provideKeycloak, withAutoRefreshToken } from 'keycloak-angular';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
 
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  constructor(private keycloak: KeycloakService) {}
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // Proveedor de Keycloak para autenticación
+    provideKeycloak({
+      config: {
+        url: 'http://host.docker.internal:8180',  // URL de tu Keycloak
+        realm: 'miapp',
+        clientId: 'frontend'
+      },
+      // Opciones de inicialización para controlar login
+      initOptions: {
+        onLoad: 'login-required',
+        checkLoginIframe: false
+      },
+      // Refresco automático del token con logout por inactividad
+      features: [
+        withAutoRefreshToken({
+          onInactivityTimeout: 'logout',
+          sessionTimeout: 60_000
+        })
+      ]
+    }),
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    return from(this.keycloak.getToken()).pipe(
-      switchMap(token => {
-        const authReq = req.clone({
-          setHeaders: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        return next.handle(authReq);
-      })
-    );
-  }
-}
+    // Proveedor del router con rutas definidas
+    provideRouter(routes)
+  ]
+};

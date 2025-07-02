@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   postgres:
     image: postgres:15
@@ -16,14 +18,14 @@ services:
     image: quay.io/keycloak/keycloak:26.1
     command: ["start-dev", "--import-realm"]
     environment:
-        - KC_BOOTSTRAP_ADMIN_USERNAME=admin
-        - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
-        - KC_HOSTNAME=host.docker.internal
-        - KC_HOSTNAME_STRICT=false
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+      - KC_HOSTNAME=host.docker.internal
+      - KC_HOSTNAME_STRICT=false
     volumes:
       - ./keycloak/export:/opt/keycloak/data/import
     ports:
-      - '8180:8080'
+      - "8180:8080"
     networks:
       - app-network
 
@@ -37,7 +39,7 @@ services:
       - KEYCLOAK_REALM=miapp
       - KEYCLOAK_CLIENT_ID=frontend
     ports:
-      - '8080:8080'
+      - "8080:8080"
     depends_on:
       - keycloak
       - postgres
@@ -57,7 +59,7 @@ services:
       - KEYCLOAK_CLIENT_ID=frontend
     volumes:
       - ./frontend-catalogo:/usr/src/app
-      - /usr/src/app/node_modules  # evitar que node_modules se sobreescriba con el volumen
+      - /usr/src/app/node_modules
     restart: always
     depends_on:
       - backend-catalogo
@@ -65,8 +67,22 @@ services:
     networks:
       - app-network
 
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    # Mapea el puerto interno 8080 de Jenkins al 9090 de tu máquina
+    ports:
+      - "9090:8080"
+      - "50001:50000"   # solo si planeas usar agentes remotos
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    restart: unless-stopped
+    networks:
+      - app-network
+
 volumes:
   pgdata:
+  jenkins_home:
 
 networks:
   app-network:
