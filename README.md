@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 # springboot-angular19-v2
 Proyecto actualizado
 
 Muy buenas tardes, 
-sAASDASDASD
+
 =======
 # Prueba Técnica - Desarrollador Java
 
@@ -65,86 +65,39 @@ Swagger en http://localhost:8080/swagger-ui/index.html
 
 ```
 
-⚠️ El frontend corre en modo desarrollo con ng serve por temas de compilación y tiempo. No se usa Nginx. 
+ADVERTENCIA.
 
-⚠️ Recordar tener docker corriendo en segundo plano.
+Reflexión final sobre el proyecto
 
+Quiero agradecer sinceramente el tiempo y la oportunidad brindada para trabajar en este proyecto. Durante el proceso, dediqué muchas horas a estudiar y comprender cómo funciona Keycloak y, aunque no logré una integración perfecta entre frontend y backend, la experiencia fue sumamente enriquecedora.
 
----
+El backend está funcional: se conecta correctamente a la base de datos, genera tokens JWT mediante Keycloak y los valida adecuadamente. Esto fue verificado realizando peticiones con Postman, donde obtuve respuestas en formato JSON desde la base de datos protegida.
 
-### 3. Acceso a la aplicación
+El principal desafío surgió al intentar compartir y validar correctamente los tokens entre el frontend y el backend. Configurar y sincronizar Keycloak en ambos entornos me llevó a probar diversas configuraciones y soluciones, lo cual me permitió adquirir un entendimiento mucho más profundo sobre autenticación y autorización con OAuth2 y OpenID Connect.
 
-Cuando accedes a http://localhost:4200, serás redirigido automáticamente a Keycloak para autenticación.
+Aunque el proyecto no se encuentra completamente terminado, esta experiencia me dejó una base sólida para seguir desarrollando aplicaciones seguras y escalables. Estoy motivado a continuar mejorando la integración y resolver los detalles pendientes.
 
-```bash
-Usuario: usuario
-Contraseña: usuario
-```
+Resumen técnico de lo implementado. Se instaló y configuró Spring Security junto con Keycloak Auth0. Se creó una carpeta de configuración (springconfig) para proteger rutas en el backend. Se realizaron pruebas en entorno de producción mediante Docker. La generación de tokens fue verificada mediante el endpoint:
 
-Una vez logueado, se accede al Realm miapp y se redirige a /productos, donde se visualiza la tabla con: Paginador, Búsqueda de productos y Filtros
+// 
 
+POST http://localhost:8180/realms/miapp/protocol/openid-connect/token
+También se verificó el funcionamiento del endpoint protegido en el backend:
 
-### 4. Iniciar el entorno de test
-```bash
-docker-compose -f docker-compose-test.yml up --build
-```
-Para acceder al test manual de frontend (JASMINE) > comando : ng test
+// 
 
-Para acceder al test manual de backend (MOCKITO JUNIT) > comando : mvn clean test
+GET http://localhost:8080/api/productos?page=0&size=100
 
-### Solución implementada.
+// 
+→ Se recibió respuesta JSON desde la base de datos tras integrar correctamente los tokens mediante Postman. Esto demuestra que el backend está funcional y correctamente asegurado.
+Problemas encontrados en el frontend. El frontend se encuentra disponible en:
 
-El proyecto implementa una arquitectura por capas en el backend (entity, repository, service, controller). Se modelaron dos entidades: Producto y Categoria, estableciendo una relación muchos-a-uno donde cada producto pertenece a una categoría. Se utilizaron más de 25 migraciones con Liquibase para crear registros, definir relaciones y precargar datos en ambas entidades. Se aplicaron buenas prácticas en la estructura del proyecto, incluyendo comentarios en los test, validaciones en la capa de controlador (backend) y en el componente producto (frontend). Se evitó el uso de valores hardcodeados, permitiendo que la solución sea escalable y mantenible. Se implemento uso de logging pero no demasiados por el hecho de solo tener una entidad, 
+// 
+http://localhost:4200/productos
+//
 
+Sin embargo, la tabla no logra cargar los datos. Al inspeccionar el navegador, se puede ver que el token fue generado exitosamente en el cliente, pero por alguna razón no se está enviando correctamente al backend, lo que provoca un error 401 (No autorizado). Intenté múltiples enfoques para resolver este problema, pero enfrenté contratiempos técnicos y algunos retrasos, como la lentitud de descarga del archivo JSON de configuración de Keycloak y su integración en el frontend.
 
-
-
----
-
-### Nota sobre tiempos de generación de imágenes
-
-Tener en cuenta que la primera vez que ejecutes los comandos `docker-compose up --build` o `docker-compose -f docker-compose-test.yml up --build`, la construcción de las imágenes puede tardar varios minutos. 
-
-Esto se debe a que:
-
-- Se instalan las dependencias de backend y frontend desde cero.
-- El frontend Angular ejecuta la compilación en modo desarrollo (ng serve), lo cual puede consumir más tiempo.
-- Descarga y configuración de las imágenes base (PostgreSQL, Keycloak, etc.)
-
-Una vez que veas en los logs que Keycloak ha terminado de cargar y se puede acceder, significa que el servicio está listo y la aplicación está disponible para usarse.
-
-
-
----
-
-### SI SURGEN ERRORES ###
-Contactarme por este medio 
-. Contacto: (+56) 9 5606 4816 (Móvil)
-. Correo: byron.becerra.aravena@gmail.com
-
----
-
-## 1. Si miapp no funciona, o no se puede acceder a localhost:4200
-  
-Abrir en el navegador: http://localhost:8180/admin/master/console/
-Iniciar sesión con las credenciales admin (por defecto admin/admin si no cambiaste). En el panel de administración, crear un nuevo realm con el nombre "miapp" y el cliente "frontend".
-
-## 2. Base de datos no conecta local o error en test (revision de base de datos)
-
-Se implemento H2 para realizar test unitarios y no tener que cambiar la base de datos durante pruebas. Si POSTGRESQL falla, corregir los datos de application-dev.yml (backend) con los datos correctos de tú usuario.  
-
-## 3. Migraciones fallan.
-
-El script de Docker debería ejecutar las migraciones según el orden del db.changelog-master.yml. A veces puede pasar que Docker corrompa las migraciones, dejando alguna en proceso y bloqueando las siguientes.
-
-Para solucionarlo, borra la caché de la base de datos local, baja los contenedores con docker-compose down y luego levanta todo de nuevo con docker-compose up --build.
-
-Base de datos tiene el nombre de "catalog_db"
-
-## 4. Backend no funciona (problema target). 
-
-Para que el backend funcione, necesitas el JAR en target/ (ej: catalog-0.0.1-SNAPSHOT.jar).
-Ejecuta dentro de backend: mvn clean package
 
 
 ## TEST EJECUTADOS FRONTEND
