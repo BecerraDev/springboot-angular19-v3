@@ -2,11 +2,9 @@
 # springboot-angular19-v2
 Proyecto actualizado
 
-Muy buenas tardes, 
+#### Reflexión final sobre el proyecto ####
 
-Reflexión final sobre el proyecto
-
-Quiero agradecer sinceramente el tiempo y la oportunidad brindada para trabajar en este proyecto. Durante el proceso, dediqué muchas horas a estudiar y comprender cómo funciona Keycloak y, aunque no logré una integración perfecta entre frontend y backend, la experiencia fue sumamente enriquecedora.
+Quiero agradecer sinceramente el tiempo y la oportunidad brindada para trabajar en este proyecto. Durante el proceso, dediqué muchas horas a estudiar y comprender cómo funciona Keycloak y, aunque no logré una integración perfecta entre frontend y backend, la experiencia fue sumamente enriquecedora. De verdad, ahora entiendo cuando me indicaron que no debo dar un tiempo definido, tomarlo con calma... agradezco sus consejos.
 
 El backend está funcional: se conecta correctamente a la base de datos, genera tokens JWT mediante Keycloak y los valida adecuadamente. Esto fue verificado realizando peticiones con Postman, donde obtuve respuestas en formato JSON desde la base de datos protegida.
 
@@ -26,6 +24,7 @@ También se verificó el funcionamiento del endpoint protegido en el backend:
 GET http://localhost:8080/api/productos?page=0&size=100
 
 // 
+
 → Se recibió respuesta JSON desde la base de datos tras integrar correctamente los tokens mediante Postman. Esto demuestra que el backend está funcional y correctamente asegurado.
 Problemas encontrados en el frontend. El frontend se encuentra disponible en:
 
@@ -34,6 +33,9 @@ http://localhost:4200/productos
 //
 
 Sin embargo, la tabla no logra cargar los datos. Al inspeccionar el navegador, se puede ver que el token fue generado exitosamente en el cliente, pero por alguna razón no se está enviando correctamente al backend, lo que provoca un error 401 (No autorizado). Intenté múltiples enfoques para resolver este problema, pero enfrenté contratiempos técnicos y algunos retrasos, como la lentitud de descarga del archivo JSON de configuración de Keycloak y su integración en el frontend.
+
+Por mi parte, seguire practicando y esforzandome para correguir el problema mientras tanto, con el tema de pruebas. Sigue intacto los TEST REALIZADOS EN JUNIT Y MOCKITO. 
+
 
 
 =======
