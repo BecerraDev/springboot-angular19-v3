@@ -14,23 +14,26 @@ Aunque el proyecto no se encuentra completamente terminado, esta experiencia me 
 
 Resumen técnico de lo implementado. Se instaló y configuró Spring Security junto con Keycloak Auth0. Se creó una carpeta de configuración (springconfig) para proteger rutas en el backend. Se realizaron pruebas en entorno de producción mediante Docker. La generación de tokens fue verificada mediante el endpoint:
 
-// 
+``
 
 POST http://localhost:8180/realms/miapp/protocol/openid-connect/token
+
+``
+
 También se verificó el funcionamiento del endpoint protegido en el backend:
 
-// 
+``
 
 GET http://localhost:8080/api/productos?page=0&size=100
 
-// 
+``
 
 → Se recibió respuesta JSON desde la base de datos tras integrar correctamente los tokens mediante Postman. Esto demuestra que el backend está funcional y correctamente asegurado.
 Problemas encontrados en el frontend. El frontend se encuentra disponible en:
 
-// 
+``
 http://localhost:4200/productos
-//
+``
 
 Sin embargo, la tabla no logra cargar los datos. Al inspeccionar el navegador, se puede ver que el token fue generado exitosamente en el cliente, pero por alguna razón no se está enviando correctamente al backend, lo que provoca un error 401 (No autorizado). Intenté múltiples enfoques para resolver este problema, pero enfrenté contratiempos técnicos y algunos retrasos, como la lentitud de descarga del archivo JSON de configuración de Keycloak y su integración en el frontend.
 
