@@ -1,0 +1,204 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: byron
+      changes:
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Monitor 27 pulgadas" }
+              - column: { name: descripcion, value: "Monitor Full HD 75Hz con panel IPS" }
+              - column: { name: precio, valueNumeric: 151905 }
+              - column: { name: categoria_id, valueNumeric: 1 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Teclado mecánico RGB" }
+              - column: { name: descripcion, value: "Switches rojos, ideal para gaming" }
+              - column: { name: precio, valueNumeric: 43225 }
+              - column: { name: categoria_id, valueNumeric: 2 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Auriculares inalámbricos" }
+              - column: { name: descripcion, value: "Cancelación activa de ruido" }
+              - column: { name: precio, valueNumeric: 85490 }
+              - column: { name: categoria_id, valueNumeric: 2 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Webcam 1080p" }
+              - column: { name: descripcion, value: "Resolución Full HD para videollamadas" }
+              - column: { name: precio, valueNumeric: 37905 }
+              - column: { name: categoria_id, valueNumeric: 2 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Disco duro SSD 1TB" }
+              - column: { name: descripcion, value: "Almacenamiento rápido para tu PC" }
+              - column: { name: precio, valueNumeric: 114000 }
+              - column: { name: categoria_id, valueNumeric: 3 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Ratón inalámbrico" }
+              - column: { name: descripcion, value: "Diseño ergonómico con batería de larga duración" }
+              - column: { name: precio, valueNumeric: 24690 }
+              - column: { name: categoria_id, valueNumeric: 2 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Fuente de poder 600W" }
+              - column: { name: descripcion, value: "Eficiencia 80 Plus Bronze" }
+              - column: { name: precio, valueNumeric: 47500 }
+              - column: { name: categoria_id, valueNumeric: 1 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Placa base ATX" }
+              - column: { name: descripcion, value: "Compatible con procesadores Intel y AMD" }
+              - column: { name: precio, valueNumeric: 124212 }
+              - column: { name: categoria_id, valueNumeric: 1 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Memoria RAM 16GB DDR4" }
+              - column: { name: descripcion, value: "Alta velocidad para multitarea" }
+              - column: { name: precio, valueNumeric: 71535 }
+              - column: { name: categoria_id, valueNumeric: 1 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Tarjeta gráfica GTX 1660" }
+              - column: { name: descripcion, value: "Ideal para juegos en Full HD" }
+              - column: { name: precio, valueNumeric: 209000 }
+              - column: { name: categoria_id, valueNumeric: 1 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Monitor ultrawide 34 pulgadas" }
+              - column: { name: descripcion, value: "Resolución 3440x1440 para productividad" }
+              - column: { name: precio, valueNumeric: 427500 }
+              - column: { name: categoria_id, valueNumeric: 1 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Teclado inalámbrico Bluetooth" }
+              - column: { name: descripcion, value: "Compatible con Windows y macOS" }
+              - column: { name: precio, valueNumeric: 34190 }
+              - column: { name: categoria_id, valueNumeric: 2 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Auriculares gaming con micrófono" }
+              - column: { name: descripcion, value: "Sonido envolvente 7.1" }
+              - column: { name: precio, valueNumeric: 57000 }
+              - column: { name: categoria_id, valueNumeric: 2 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Cámara IP de seguridad" }
+              - column: { name: descripcion, value: "Visión nocturna y detección de movimiento" }
+              - column: { name: precio, valueNumeric: 66500 }
+              - column: { name: categoria_id, valueNumeric: 4 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Disco duro externo 2TB" }
+              - column: { name: descripcion, value: "USB 3.0 para transferencia rápida" }
+              - column: { name: precio, valueNumeric: 90725 }
+              - column: { name: categoria_id, valueNumeric: 3 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Router WiFi AC1200" }
+              - column: { name: descripcion, value: "Doble banda para conexiones rápidas" }
+              - column: { name: precio, valueNumeric: 52250 }
+              - column: { name: categoria_id, valueNumeric: 4 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Micrófono condensador USB" }
+              - column: { name: descripcion, value: "Calidad profesional para streaming" }
+              - column: { name: precio, valueNumeric: 43462 }
+              - column: { name: categoria_id, valueNumeric: 5 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Soporte para laptop ajustable" }
+              - column: { name: descripcion, value: "Diseño ergonómico y portátil" }
+              - column: { name: precio, valueNumeric: 19000 }
+              - column: { name: categoria_id, valueNumeric: 5 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "SSD NVMe 500GB" }
+              - column: { name: descripcion, value: "Alta velocidad de lectura y escritura" }
+              - column: { name: precio, valueNumeric: 80750 }
+              - column: { name: categoria_id, valueNumeric: 3 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Fuente de poder 750W" }
+              - column: { name: descripcion, value: "Certificación 80 Plus Gold" }
+              - column: { name: precio, valueNumeric: 85500 }
+              - column: { name: categoria_id, valueNumeric: 1 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Tarjeta de sonido externa" }
+              - column: { name: descripcion, value: "Audio profesional para músicos" }
+              - column: { name: precio, valueNumeric: 114000 }
+              - column: { name: categoria_id, valueNumeric: 5 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Cable HDMI 2 metros" }
+              - column: { name: descripcion, value: "Compatible con 4K y 60Hz" }
+              - column: { name: precio, valueNumeric: 9500 }
+              - column: { name: categoria_id, valueNumeric: 5 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Hub USB 4 puertos" }
+              - column: { name: descripcion, value: "Expande tus conexiones fácilmente" }
+              - column: { name: precio, valueNumeric: 14250 }
+              - column: { name: categoria_id, valueNumeric: 5 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Monitor curvo 24 pulgadas" }
+              - column: { name: descripcion, value: "Resolución Full HD y tasa de refresco 144Hz" }
+              - column: { name: precio, valueNumeric: 171000 }
+              - column: { name: categoria_id, valueNumeric: 1 }
+
+        - insert:
+            tableName: productos
+            columns:
+              - column: { name: nombre, value: "Webcam Full HD con micrófono" }
+              - column: { name: descripcion, value: "Para videoconferencias y streaming" }
+              - column: { name: precio, valueNumeric: 47500 }
+              - column: { name: categoria_id, valueNumeric: 2 }

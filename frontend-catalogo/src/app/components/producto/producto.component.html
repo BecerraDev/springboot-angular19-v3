@@ -1,0 +1,50 @@
+
+<div class="container my-4">
+  <h1 class="mb-4" style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 3rem; color: #2c3e50;">
+    Búsqueda de Productos
+  </h1>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="aplicarFiltro($event)" placeholder="Buscar producto" />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table mat-table [dataSource]="dataSource" matSort class="table table-striped table-hover mat-elevation-z8">
+      <!-- ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">ID</th>
+        <td mat-cell *matCellDef="let producto">{{ producto.id }}</td>
+      </ng-container>
+
+      <!-- Nombre -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Nombre</th>
+        <td mat-cell *matCellDef="let producto">{{ producto.nombre }}</td>
+      </ng-container>
+
+        <!-- Descripcion -->
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</th>
+        <td mat-cell *matCellDef="let element">{{element.descripcion}}</td>
+      </ng-container>
+
+      <!-- Precio -->
+      <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Precio</th>
+        <td mat-cell *matCellDef="let producto">{{ producto.precio }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-end mt-3">
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: catalog_db
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.1
+    command: ["start-dev", "--import-realm"]
+    environment:
+        - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+        - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+        - KC_HOSTNAME=host.docker.internal
+        - KC_HOSTNAME_STRICT=false
+    volumes:
+      - ./keycloak/export:/opt/keycloak/data/import
+    ports:
+      - '8180:8080'
+    networks:
+      - app-network
+
+  backend-catalogo:
+    build: ./backend-catalogo
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/catalog_db
+      - SPRING_DATASOURCE_USERNAME=myuser
+      - SPRING_DATASOURCE_PASSWORD=mypassword
+      - KEYCLOAK_URL=http://keycloak:8080
+      - KEYCLOAK_REALM=miapp
+      - KEYCLOAK_CLIENT_ID=frontend
+    ports:
+      - '8080:8080'
+    depends_on:
+      - keycloak
+      - postgres
+    networks:
+      - app-network
+
+  frontend-catalogo:
+    build:
+      context: ./frontend-catalogo
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=development
+      - KEYCLOAK_URL=http://keycloak:8080
+      - KEYCLOAK_REALM=miapp
+      - KEYCLOAK_CLIENT_ID=frontend
+    volumes:
+      - ./frontend-catalogo:/usr/src/app
+      - /usr/src/app/node_modules  # evitar que node_modules se sobreescriba con el volumen
+    restart: always
+    depends_on:
+      - backend-catalogo
+      - keycloak
+    networks:
+      - app-network
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend-tests:
+    build:
+      context: ./backend-catalogo
+      dockerfile: Dockerfile.test
+    command: mvn test
+    restart: "no"
+    # volumes:
+    #   - ./backend-catalogo:/app
+
+  frontend-tests:
+    build:
+      context: ./frontend-catalogo
+      dockerfile: Dockerfile.test
+    command: ng test --watch=false --browsers=ChromeHeadless
+    restart: "no"
+    # volumes:
+    #   - ./frontend-catalogo:/app

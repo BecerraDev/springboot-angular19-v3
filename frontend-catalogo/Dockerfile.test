@@ -1,0 +1,12 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+# Ejecuta jasmine directamente sin Karma ni navegador
+CMD ["npx", "jasmine"]

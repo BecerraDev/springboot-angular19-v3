@@ -1,0 +1,52 @@
+
+
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: byron
+      changes:
+        - insert:
+            tableName: categoria
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: nombre
+                  value: Electrónica
+        - insert:
+            tableName: categoria
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: nombre
+                  value: Periféricos
+        - insert:
+            tableName: categoria
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 3
+              - column:
+                  name: nombre
+                  value: Almacenamiento
+        - insert:
+            tableName: categoria
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 4
+              - column:
+                  name: nombre
+                  value: Redes
+        - insert:
+            tableName: categoria
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 5
+              - column:
+                  name: nombre
+                  value: Accesorios
