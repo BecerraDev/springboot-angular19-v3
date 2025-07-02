@@ -12,7 +12,9 @@ El principal desafío surgió al intentar compartir y validar correctamente los 
 
 Aunque el proyecto no se encuentra completamente terminado, esta experiencia me dejó una base sólida para seguir desarrollando aplicaciones seguras y escalables. Estoy motivado a continuar mejorando la integración y resolver los detalles pendientes.
 
-Resumen técnico de lo implementado. Se instaló y configuró Spring Security junto con Keycloak Auth0. Se creó una carpeta de configuración (springconfig) para proteger rutas en el backend. Se realizaron pruebas en entorno de producción mediante Docker. La generación de tokens fue verificada mediante el endpoint:
+### Resumen técnico de lo implementado. ###
+
+Se instaló y configuró Spring Security junto con Keycloak Auth0. Se creó una carpeta de configuración (springconfig) para proteger rutas en el backend. Se realizaron pruebas en entorno de producción mediante Docker. La generación de tokens fue verificada mediante el endpoint:
 
 ``
 
