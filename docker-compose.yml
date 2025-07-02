@@ -70,10 +70,10 @@ services:
   jenkins:
     image: jenkins/jenkins:lts
     container_name: jenkins
-    # Mapea el puerto interno 8080 de Jenkins al 9090 de tu máquina
+    # Jenkins
     ports:
       - "9090:8080"
-      - "50001:50000"   # solo si planeas usar agentes remotos
+      - "50001:50000"   
     volumes:
       - jenkins_home:/var/jenkins_home
     restart: unless-stopped
