@@ -16,15 +16,15 @@ Resumen técnico de lo implementado. Se instaló y configuró Spring Security ju
 
 ``
 
-POST http://localhost:8180/realms/miapp/protocol/openid-connect/token
+-> POST http://localhost:8180/realms/miapp/protocol/openid-connect/token
 
 ``
 
-También se verificó el funcionamiento del endpoint protegido en el backend:
+-> También se verificó el funcionamiento del endpoint protegido en el backend:
 
 ``
 
-GET http://localhost:8080/api/productos?page=0&size=100
+-> GET http://localhost:8080/api/productos?page=0&size=100
 
 ``
 
