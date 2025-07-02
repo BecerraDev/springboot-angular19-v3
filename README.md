@@ -35,9 +35,10 @@ Problemas encontrados en el frontend. El frontend se encuentra disponible en:
 http://localhost:4200/productos
 ``
 
-Sin embargo, la tabla no logra cargar los datos. Al inspeccionar el navegador, se puede ver que el token fue generado exitosamente en el cliente, pero por alguna razón no se está enviando correctamente al backend, lo que provoca un error 401 (No autorizado). Intenté múltiples enfoques para resolver este problema, pero enfrenté contratiempos técnicos y algunos retrasos, como la lentitud de descarga del archivo JSON de configuración de Keycloak y su integración en el frontend.
+Sin embargo, la tabla no logra cargar los datos. Al inspeccionar el navegador, se puede ver que el token fue generado exitosamente en el cliente, pero por alguna razón no se está enviando correctamente al backend, lo que provoca un error 401 (No autorizado). Intenté múltiples enfoques para resolver este problema, pero enfrenté contratiempos técnicos y algunos retrasos, como la lentitud de descarga del archivo JSON de configuración de Keycloak y su integración en el frontend. ( Utilice videos y un poco de inteligencia artificial pero el material es un poco minimo, aun así sigo intentando)
 
 Por mi parte, seguire practicando y esforzandome para correguir el problema mientras tanto, con el tema de pruebas. Sigue intacto los TEST REALIZADOS EN JUNIT Y MOCKITO. 
+Instale JENKINS, configure usuario y realice el despliegue junto a los otros servicios. 
 
 
 
