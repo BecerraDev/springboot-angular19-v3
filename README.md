@@ -11,37 +11,9 @@ Proyecto actualizado
   
 #### Reflexión final sobre el proyecto ####
 
-Quiero agradecer sinceramente la oportunidad y el tiempo brindados para trabajar en este proyecto. Durante el proceso, aprendí mucho sobre Keycloak, Spring Security y la integración de autenticación basada en tokens JWT.
+Quiero agradecer sinceramente la oportunidad y el tiempo brindados para trabajar en este proyecto. Durante el proceso, aprendí muchísimo sobre Keycloak, Spring Security y la integración de autenticación basada en tokens JWT.
 
-Estado actual
-🔵 Backend completamente funcional:
-
-Se conecta correctamente a la base de datos.
-
-Genera y valida tokens JWT con Keycloak.
-
-Endpoints protegidos funcionan correctamente, verificados con Postman y pruebas automatizadas.
-
-🔵 Frontend integrado correctamente:
-
-El frontend ahora envía y valida el token JWT con el backend sin problemas.
-
-La tabla de productos carga datos desde el backend protegido sin errores 401.
-
-🔵 Pruebas:
-
-Tests unitarios y de integración con JUnit y Mockito continúan vigentes y funcionando.
-
-🔵 CI/CD:
-
-Jenkins instalado y configurado para automatizar builds y despliegues.
-
-Próximos pasos
-Mejorar y ampliar las pruebas automatizadas.
-
-Optimizar la experiencia de usuario en el frontend.
-
-Profundizar en la seguridad y escalabilidad del sistema.
+Al principio tuve varios problemas, especialmente porque el frontend no lograba conectarse correctamente al backend. El token generado en el cliente no se enviaba como debía, lo que provocaba errores y mucho estrés. Después de darle muchas vueltas y tomarme un descanso para despejar la mente, pude entender mejor cómo funciona la sesión, la manera correcta de enviar el token y cómo configurar Keycloak adecuadamente. Si tuviera más tiempo, me gustaría profundizar en la gestión de roles y permisos para hacer la aplicación aún más robusta. Mientras tanto, seguiré aprendiendo y mejorando estos aspectos por mi cuenta.
 
 
 
