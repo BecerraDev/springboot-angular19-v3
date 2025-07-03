@@ -1,6 +1,6 @@
 
 # springboot-angular19-v2
-Proyecto actualizado
+Proyecto actualizado. Se creo otro repositorio porque el proyecto inicial es muy diferente a este. 
 
 ## Estado actual del proyecto
 
@@ -66,7 +66,7 @@ Incluye autenticación basada en roles y pruebas unitarias para frontend y backe
 
 ```bash
 git clone https://github.com/BecerraDev/springboot-angular19.git
-cd springboot-angular19
+cd springboot-angular19-v3
 ```
 
 ### 2. Iniciar el entorno de desarrollo
