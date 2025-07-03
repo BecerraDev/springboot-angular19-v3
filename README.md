@@ -2,45 +2,46 @@
 # springboot-angular19-v2
 Proyecto actualizado
 
+## Estado actual del proyecto
+
+🔵 Backend completamente funcional con Spring Security y Keycloak.  
+🔵 Frontend correctamente integrado con Keycloak.  
+🔵 Pruebas realizadas exitosamente con Postman.  
+
+  
 #### Reflexión final sobre el proyecto ####
 
-Quiero agradecer sinceramente el tiempo y la oportunidad brindada para trabajar en este proyecto. Durante el proceso, dediqué muchas horas a estudiar y comprender cómo funciona Keycloak y, aunque no logré una integración perfecta entre frontend y backend, la experiencia fue sumamente enriquecedora. De verdad, ahora entiendo cuando me indicaron que no debo dar un tiempo definido, tomarlo con calma... agradezco sus consejos.
+Quiero agradecer sinceramente la oportunidad y el tiempo brindados para trabajar en este proyecto. Durante el proceso, aprendí mucho sobre Keycloak, Spring Security y la integración de autenticación basada en tokens JWT.
 
-El backend está funcional: se conecta correctamente a la base de datos, genera tokens JWT mediante Keycloak y los valida adecuadamente. Esto fue verificado realizando peticiones con Postman, donde obtuve respuestas en formato JSON desde la base de datos protegida.
+Estado actual
+🔵 Backend completamente funcional:
 
-El principal desafío surgió al intentar compartir y validar correctamente los tokens entre el frontend y el backend. Configurar y sincronizar Keycloak en ambos entornos me llevó a probar diversas configuraciones y soluciones, lo cual me permitió adquirir un entendimiento mucho más profundo sobre autenticación y autorización con OAuth2 y OpenID Connect.
+Se conecta correctamente a la base de datos.
 
-Aunque el proyecto no se encuentra completamente terminado, esta experiencia me dejó una base sólida para seguir desarrollando aplicaciones seguras y escalables. Estoy motivado a continuar mejorando la integración y resolver los detalles pendientes.
+Genera y valida tokens JWT con Keycloak.
 
-### Resumen técnico de lo implementado. ###
+Endpoints protegidos funcionan correctamente, verificados con Postman y pruebas automatizadas.
 
-Se instaló y configuró Spring Security junto con Keycloak Auth0. Se creó una carpeta de configuración (springconfig) para proteger rutas en el backend. Se realizaron pruebas en entorno de producción mediante Docker. La generación de tokens fue verificada mediante el endpoint:
+🔵 Frontend integrado correctamente:
 
-``
+El frontend ahora envía y valida el token JWT con el backend sin problemas.
 
--> POST http://localhost:8180/realms/miapp/protocol/openid-connect/token
+La tabla de productos carga datos desde el backend protegido sin errores 401.
 
-``
+🔵 Pruebas:
 
--> También se verificó el funcionamiento del endpoint protegido en el backend:
+Tests unitarios y de integración con JUnit y Mockito continúan vigentes y funcionando.
 
-``
+🔵 CI/CD:
 
--> GET http://localhost:8080/api/productos?page=0&size=100
+Jenkins instalado y configurado para automatizar builds y despliegues.
 
-``
+Próximos pasos
+Mejorar y ampliar las pruebas automatizadas.
 
-→ Se recibió respuesta JSON desde la base de datos tras integrar correctamente los tokens mediante Postman. Esto demuestra que el backend está funcional y correctamente asegurado.
-Problemas encontrados en el frontend. El frontend se encuentra disponible en:
+Optimizar la experiencia de usuario en el frontend.
 
-``
-http://localhost:4200/productos
-``
-
-Sin embargo, la tabla no logra cargar los datos. Al inspeccionar el navegador, se puede ver que el token fue generado exitosamente en el cliente, pero por alguna razón no se está enviando correctamente al backend, lo que provoca un error 401 (No autorizado). Intenté múltiples enfoques para resolver este problema, pero enfrenté contratiempos técnicos y algunos retrasos, como la lentitud de descarga del archivo JSON de configuración de Keycloak y su integración en el frontend. ( Utilice videos y un poco de inteligencia artificial pero el material es un poco minimo, aun así sigo intentando)
-
-Por mi parte, seguire practicando y esforzandome para correguir el problema mientras tanto, con el tema de pruebas. Sigue intacto los TEST REALIZADOS EN JUNIT Y MOCKITO. 
-Instale JENKINS, configure usuario y realice el despliegue junto a los otros servicios. 
+Profundizar en la seguridad y escalabilidad del sistema.
 
 
 
