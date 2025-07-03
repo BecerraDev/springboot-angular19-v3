@@ -58,8 +58,8 @@ Incluye autenticación basada en roles y pruebas unitarias para frontend y backe
 - PostgreSQL  
 - Keycloak 26  
 - Docker / Docker Compose  
-- Jasmine (Frontend)  
-- JUnit 5 + Mockito (Backend) -> JACOCO ( Test de Cobertura )
+- Jasmine (PRUEBAS UNITARIAS -> REVISION DE COBERTURA)  
+- JUnit 5 + Mockito (PRUEBAS UNITARIAS) -> JACOCO ( Test de Cobertura )
 
 ---
 
