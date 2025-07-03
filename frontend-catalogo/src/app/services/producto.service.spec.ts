@@ -1,55 +1,64 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { ProductoService } from './producto.service';
-import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { KeycloakService } from 'keycloak-angular';
+
+// Mock de KeycloakService que siempre retorna un token
+class MockKeycloakService {
+  getToken(): Promise<string> {
+    return Promise.resolve('fake-token');
+  }
+}
 
 describe('ProductoService', () => {
   let service: ProductoService;
-  let httpMock: HttpTestingController;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
-    // Configura el TestBed con el servicio y el cliente HTTP de testing
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       providers: [
         ProductoService,
-        provideHttpClient(),
-        provideHttpClientTesting()
-      ]
+        { provide: KeycloakService, useClass: MockKeycloakService }
+      ],
     });
+
     service = TestBed.inject(ProductoService);
-    httpMock = TestBed.inject(HttpTestingController);
+    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   afterEach(() => {
-    // Verifica que no hayan solicitudes HTTP pendientes después de cada test
-    httpMock.verify();
+    httpTestingController.verify(); // Verifica que no queden peticiones pendientes
   });
 
   it('should be created', () => {
-    // Verifica que el servicio se cree correctamente
     expect(service).toBeTruthy();
   });
 
-  it('obtenerProductos debería hacer GET y devolver datos', (done) => {
-    // Mock de respuesta que simula datos del backend
+  it('obtenerProductos debería hacer GET y devolver datos', fakeAsync(() => {
     const mockResponse = {
-      content: [{ id: 1, nombre: 'A', precio: 100 }],
-      totalElements: 1
+      data: [{ id: 1, nombre: 'Producto 1' }],
+      total: 1,
+      page: 0,
+      size: 10,
     };
 
-    // Llama al método y verifica que devuelva la respuesta mockeada
-    service.obtenerProductos(0, 100).subscribe({
-      next: resp => {
-        expect(resp).toEqual(mockResponse);
-        done();
-      },
-      error: done.fail
+    let responseData: any;
+
+    service.obtenerProductos(0, 10).subscribe(response => {
+      responseData = response;
     });
 
-    // Espera la petición GET al endpoint y responde con el mock
-    const req = httpMock.expectOne(req =>
-      req.method === 'GET' && req.url.includes('/api/productos')
-    );
+    tick(); // Avanza el tiempo para resolver la promesa del token
+
+    // Espera que se haga la petición con la URL completa (incluyendo parámetros)
+    const req = httpTestingController.expectOne('http://localhost:8080/api/productos?page=0&size=10');
+
+    expect(req.request.method).toBe('GET');
+    expect(req.request.headers.get('Authorization')).toBe('Bearer fake-token');
+
     req.flush(mockResponse);
-  });
+
+    expect(responseData).toEqual(mockResponse);
+  }));
 });
