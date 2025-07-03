@@ -112,7 +112,11 @@ Para iniciar sesión usar -> nombre "usuario" y clave "usuario".
 
   #### Foto de resultado esperado: ####
 
-  Funcional
+  Test realizado en JACOCO comando ejecutado mvn clean verify
+
+  ![image](https://github.com/user-attachments/assets/58ca545a-85d8-40ad-8bf1-647ff486cc05)
+
+  Resultado esperado funcional
   
   ![image](https://github.com/user-attachments/assets/f174b96e-fb40-4aca-b67b-daa90e809533)
 
