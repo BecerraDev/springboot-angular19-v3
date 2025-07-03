@@ -56,7 +56,7 @@ Incluye autenticación basada en roles y pruebas unitarias para frontend y backe
 - Keycloak 26  
 - Docker / Docker Compose  
 - Jasmine (Frontend)  
-- JUnit 5 + Mockito (Backend)  
+- JUnit 5 + Mockito (Backend) -> JACOCO ( Test de Cobertura )
 
 ---
 
@@ -116,6 +116,10 @@ Para iniciar sesión usar -> nombre "usuario" y clave "usuario".
 
   ![image](https://github.com/user-attachments/assets/58ca545a-85d8-40ad-8bf1-647ff486cc05)
 
+  Test realizado en JASMINE 
+
+  ![image](https://github.com/user-attachments/assets/a74a7dd9-667d-4c98-83f4-af52b20c8ef3)
+
   Resultado esperado funcional
   
   ![image](https://github.com/user-attachments/assets/f174b96e-fb40-4aca-b67b-daa90e809533)
@@ -134,6 +138,3 @@ Para iniciar sesión usar -> nombre "usuario" y clave "usuario".
 
 
 
-
-
->>>>>>> master
