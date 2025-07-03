@@ -68,7 +68,7 @@ Incluye autenticación basada en roles y pruebas unitarias para frontend y backe
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/BecerraDev/springboot-angular19.git
+git clone https://github.com/BecerraDev/springboot-angular19-v3
 cd springboot-angular19-v3
 ```
 
