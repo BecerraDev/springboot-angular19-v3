@@ -4,9 +4,13 @@ Proyecto actualizado
 
 ## Estado actual del proyecto
 
-🔵 Backend completamente funcional con Spring Security y Keycloak.  
-🔵 Frontend correctamente integrado con Keycloak.  
-🔵 Pruebas realizadas exitosamente con Postman.  
+🔵 Backend completamente funcional con Spring Security y Keycloak.
+🔵 Token JWT generado y validado correctamente por Keycloak.
+🔵 Token enviado desde el frontend autorizado y recibido en el backend.
+🔵 Frontend correctamente integrado con Keycloak para autenticación.
+🔵 Datos protegidos obtenidos y mostrados correctamente en la tabla del frontend.
+🔵 Pruebas realizadas exitosamente con Postman para verificar seguridad y endpoints.
+🔵 Instalación y configuración inicial de Jenkins para despliegue y automatización.
 
   
 #### Reflexión final sobre el proyecto ####
@@ -103,7 +107,20 @@ ADVERTENCIA.
 
   #### Foto de resultado esperado: ####
 
-  ![image](https://github.com/user-attachments/assets/9365da2e-65e0-4cc3-8aee-ab2bf9835724)
+  Funcional
+  
+     ![image](https://github.com/user-attachments/assets/f174b96e-fb40-4aca-b67b-daa90e809533)
+
+  Token generado con exito en Frontend
+
+    ![image](https://github.com/user-attachments/assets/9b2b31fa-dbe4-4a5c-8e0a-6c042c59cf91)
+
+  Token en Postman 
+
+    ![image](https://github.com/user-attachments/assets/c020fbcd-6571-4f5e-acff-d0d0e3b55072)
+
+
+
 
 
 
