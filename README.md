@@ -34,7 +34,7 @@ Para las pruebas unitarias se utilizó JUnit y Mockito, las cuales ya estaban im
 ---
 # Prueba Técnica - Desarrollador Java
 
-Muchas gracias por la oportunidad y por este desafío como desarrollador junior. Adjunto toda la información relacionada al proyecto, así como la guía para su ejecución y pruebas.
+Adjunto toda la información relacionada al proyecto, así como la guía para su ejecución y pruebas abajo.
 
 ## Descripción
 
