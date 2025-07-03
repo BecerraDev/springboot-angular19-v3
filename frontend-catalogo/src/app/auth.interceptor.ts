@@ -1,4 +1,8 @@
-// src/app/auth.interceptor.ts
+/**
+ * Interceptor HTTP que añade el token de Keycloak en el encabezado Authorization
+ * para cada petición saliente, si el token está disponible.
+ */
+
 import { Injectable } from '@angular/core';
 import {
   HttpInterceptor,

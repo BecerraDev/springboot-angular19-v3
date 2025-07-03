@@ -9,9 +9,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { FooterComponent } from './components/footer/footer.component';
+
+import { TokenInterceptor } from './services/token.interceptor';  // ajusta la ruta si es necesario
 
 @NgModule({
   declarations: [
@@ -29,10 +33,14 @@ import { FooterComponent } from './components/footer/footer.component';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    HttpClientModule, // agregado aquí
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy 
-      
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
     }
   ],
   bootstrap: [AppComponent]

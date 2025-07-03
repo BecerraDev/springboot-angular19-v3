@@ -37,6 +37,7 @@ export class ProductoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    // Inicialmente asignamos paginador y sort para evitar errores antes de cargar datos
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -45,6 +46,9 @@ export class ProductoComponent implements OnInit, AfterViewInit {
     this.productoService.obtenerProductos(0, 100).subscribe({
       next: (data) => {
         this.dataSource.data = data.content;
+        // Asegurar que el paginador y sort se asignan después de cargar los datos
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error: (err) => console.error(err),
     });
@@ -55,5 +59,3 @@ export class ProductoComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = valor.trim().toLowerCase();
   }
 }
-
-

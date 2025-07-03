@@ -1,25 +1,37 @@
+// main.ts
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
-import { routes } from './app/app.routes'; // si usas rutas, si no puedes eliminar esto
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { importProvidersFrom, APP_INITIALIZER } from '@angular/core';
 
-import { provideKeycloak } from 'keycloak-angular';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(routes), // elimina esta línea si no usas rutas
-    provideHttpClient(),
-    provideKeycloak({
+function initializeKeycloak(keycloak: KeycloakService): () => Promise<boolean> {
+  return () =>
+    keycloak.init({
       config: {
-        url: 'http://host.docker.internal:8180',  // URL de tu Keycloak
-          realm: 'miapp',
+        url: 'http://host.docker.internal:8180', // Keycloak desde Docker
+        realm: 'miapp',
         clientId: 'frontend',
       },
       initOptions: {
-        onLoad: 'login-required',  // Exige login siempre
+        onLoad: 'login-required', // fuerza a mostrar el login
         checkLoginIframe: false,
       },
-    }),
+    });
+}
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(withInterceptorsFromDi()),
+    provideRouter([]), 
+    importProvidersFrom(KeycloakAngularModule),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    },
   ],
 }).catch((err) => console.error(err));

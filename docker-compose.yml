@@ -15,7 +15,7 @@ services:
       - app-network
 
   keycloak:
-    image: quay.io/keycloak/keycloak:26.1
+    image: quay.io/keycloak/keycloak:26.2.5
     command: ["start-dev", "--import-realm"]
     environment:
       - KC_BOOTSTRAP_ADMIN_USERNAME=admin
