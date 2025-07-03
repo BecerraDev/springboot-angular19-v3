@@ -30,8 +30,8 @@ Al principio tuve varios problemas, especialmente porque el frontend no lograba 
 Como material de estudio, tuve que entender la configuración de Keycloak y como guardar el JSON para ser importado (esto tan leve me tomo mucho tiempo) después de actualizar e importar el nuevo JSON, tuve que instalar SPRING SECURITY configurar el acceso y luego comenzar hacer pruebas con POSTMAN al token generado en Keycloak. Por ultimo, tuve que comprender en mayor profundidad como se comporta el frontend al momento de guardar un Token en LocalStorage y ser usado correctamente
 
 Para las pruebas unitarias se utilizó JUnit y Mockito, las cuales ya estaban implementadas previamente en el proyecto. Se agregó la herramienta JaCoCo para realizar el análisis de cobertura de código. El objetivo fue comprobar qué porcentaje del código fuente está cubierto por pruebas automatizadas.
----
 
+---
 # Prueba Técnica - Desarrollador Java
 
 Muchas gracias por la oportunidad y por este desafío como desarrollador junior. Adjunto toda la información relacionada al proyecto, así como la guía para su ejecución y pruebas.
