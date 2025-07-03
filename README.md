@@ -115,11 +115,12 @@ Para iniciar sesión usar -> nombre "usuario" y clave "usuario".
   
   ![image](https://github.com/user-attachments/assets/f174b96e-fb40-4aca-b67b-daa90e809533)
 
-  Token generado con exito en Frontend
+  Token generado con exito en Keykloak (Frontend)
+  ( Es el mismo que tambien se puede obtener con Postman en http://localhost:8180/realms/miapp/protocol/openid-connect/token )
 
   ![image](https://github.com/user-attachments/assets/9b2b31fa-dbe4-4a5c-8e0a-6c042c59cf91)
 
-  Token en Postman 
+  Token usado en Postman 
 
   ![image](https://github.com/user-attachments/assets/c020fbcd-6571-4f5e-acff-d0d0e3b55072)
 
