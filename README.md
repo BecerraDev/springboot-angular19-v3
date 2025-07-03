@@ -23,7 +23,7 @@ Proyecto actualizado.Se creo otro repositorio porque el proyecto inicial es muy 
   
 #### Reflexión final sobre el proyecto ####
 
-Quiero agradecer sinceramente la oportunidad y el tiempo brindados para trabajar en este proyecto. Durante el proceso, aprendí muchísimo sobre Keycloak, Spring Security y la integración de autenticación basada en tokens JWT.
+Quiero agradecer sinceramente la oportunidad y el tiempo brindados para trabajar en esta prueba tecnica. Durante el proceso, aprendí muchísimo sobre Keycloak, Spring Security y la integración de autenticación basada en tokens JWT.
 
 Al principio tuve varios problemas, especialmente porque el frontend no lograba conectarse correctamente al backend. El token generado en el cliente no se enviaba como debía, lo que provocaba errores y mucho estrés. Después de darle muchas vueltas y tomarme un descanso para despejar la mente, pude entender mejor cómo funciona la sesión, la manera correcta de enviar el token y cómo configurar Keycloak adecuadamente. Si tuviera más tiempo, me gustaría profundizar en la gestión de roles y permisos para hacer la aplicación aún más robusta. Mientras tanto, seguiré aprendiendo y mejorando estos aspectos por mi cuenta.
 
