@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.test.context.support.WithMockUser;
 
 /**
  * Pruebas unitarias para el controlador de productos usando MockMvc
@@ -41,6 +43,7 @@ public class ProductoControllerTest {
     /**
      * Verifica que la API devuelve una lista paginada de productos correctamente
      */
+    @WithMockUser(roles = "user")
     @Test
     void listarProductos_debeRetornarListaDeProductos() throws Exception {
         Producto p1 = new Producto(1L, "Producto A", "Desc A", 100.0, null);
@@ -52,15 +55,16 @@ public class ProductoControllerTest {
 
         mockMvc.perform(get("/api/productos")
                 .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())  // Código HTTP 200 OK
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))  // Tipo de contenido JSON
-            .andExpect(jsonPath("$.content.length()", is(2)))  // La respuesta contiene 2 productos
-            .andExpect(jsonPath("$.content[0].nombre", is("Producto A")));  // El primer producto se llama "Producto A"
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.content.length()", is(2)))
+            .andExpect(jsonPath("$.content[0].nombre", is("Producto A")));
     }
 
     /**
      * Verifica que la API devuelve un producto existente correctamente al solicitar por ID
      */
+    @WithMockUser(roles = "user")
     @Test
     void obtenerProducto_existente_debeRetornarProducto() throws Exception {
         Producto producto = new Producto(1L, "Producto X", "Desc X", 150.0, null);
@@ -69,27 +73,41 @@ public class ProductoControllerTest {
 
         mockMvc.perform(get("/api/productos/1")
                 .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())  // Código HTTP 200 OK
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))  // Tipo de contenido JSON
-            .andExpect(jsonPath("$.nombre", is("Producto X")))  // El producto tiene nombre "Producto X"
-            .andExpect(jsonPath("$.precio", is(150.0)));  // El precio es 150.0
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.nombre", is("Producto X")))
+            .andExpect(jsonPath("$.precio", is(150.0)));
     }
 
     /**
      * Verifica que la API devuelve un error 404 cuando se solicita un producto inexistente
      */
+    @WithMockUser(roles = "user")
     @Test
     void obtenerProducto_noExistente_debeRetornarNotFound() throws Exception {
         Mockito.when(productoService.obtenerPorId(99L))
                .thenReturn(Optional.empty());
 
         mockMvc.perform(get("/api/productos/99"))
-            .andExpect(status().isNotFound());  // Código HTTP 404 Not Found
+            .andExpect(status().isNotFound());
+    }
+
+    /**
+     * Verifica que la API devuelve un error 500 si ocurre una excepción interna
+     */
+    @WithMockUser(roles = "user")
+    @Test
+    void obtenerProducto_errorInterno_debeRetornarError500() throws Exception {
+        Mockito.when(productoService.obtenerPorId(1L))
+               .thenThrow(new DataAccessException("Simulación de error DB") {});
+
+        mockMvc.perform(get("/api/productos/1")
+                .accept(MediaType.APPLICATION_JSON))
+            .andExpect(status().isInternalServerError());
     }
 
     /**
      * Configuración de prueba que inyecta un mock de ProductoService
-     * sin utilizar la anotación @MockBean (que está deprecada)
      */
     @TestConfiguration
     static class TestConfig {

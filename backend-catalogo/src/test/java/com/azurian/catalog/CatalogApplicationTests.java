@@ -8,8 +8,13 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 class CatalogApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
+
+    @Test
+    void mainDebeEjecutarseSinErrores() {
+        CatalogApplication.main(new String[] {});
+    }
 
 }
