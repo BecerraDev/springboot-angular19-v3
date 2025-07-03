@@ -72,18 +72,16 @@ Esto levantará:
 
 PostgreSQL en localhost:5432
 
-Keycloak en http://localhost:8180
+Keycloak en http://host.docker.internal:8180
 
 Backend Spring Boot en http://localhost:8080
 
-Frontend Angular (ng serve) en http://localhost:4200 → entrar aquí.
-
-Swagger en http://localhost:8080/swagger-ui/index.html
+Frontend Angularen http://localhost:4200
 
 ```
 
-ADVERTENCIA.
-
+Credenciales. 
+Para iniciar sesión se tiene que usar nombre "usuario" y clave "usuario".
 
 
 ## TEST EJECUTADOS FRONTEND
@@ -109,15 +107,15 @@ ADVERTENCIA.
 
   Funcional
   
-     ![image](https://github.com/user-attachments/assets/f174b96e-fb40-4aca-b67b-daa90e809533)
+  ![image](https://github.com/user-attachments/assets/f174b96e-fb40-4aca-b67b-daa90e809533)
 
   Token generado con exito en Frontend
 
-    ![image](https://github.com/user-attachments/assets/9b2b31fa-dbe4-4a5c-8e0a-6c042c59cf91)
+  ![image](https://github.com/user-attachments/assets/9b2b31fa-dbe4-4a5c-8e0a-6c042c59cf91)
 
   Token en Postman 
 
-    ![image](https://github.com/user-attachments/assets/c020fbcd-6571-4f5e-acff-d0d0e3b55072)
+  ![image](https://github.com/user-attachments/assets/c020fbcd-6571-4f5e-acff-d0d0e3b55072)
 
 
 
