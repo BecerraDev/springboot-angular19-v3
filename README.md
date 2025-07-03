@@ -25,9 +25,10 @@ Quiero agradecer sinceramente la oportunidad y el tiempo brindados para trabajar
 
 Al principio tuve varios problemas, especialmente porque el frontend no lograba conectarse correctamente al backend. El token generado en el cliente no se enviaba como debía, lo que provocaba errores y mucho estrés. Después de darle muchas vueltas y tomarme un descanso para despejar la mente, pude entender mejor cómo funciona la sesión, la manera correcta de enviar el token y cómo configurar Keycloak adecuadamente. Si tuviera más tiempo, me gustaría profundizar en la gestión de roles y permisos para hacer la aplicación aún más robusta. Mientras tanto, seguiré aprendiendo y mejorando estos aspectos por mi cuenta.
 
+Como material de estudio, tuve que entender la configuración de Keycloak y como guardar el JSON para ser importado (esto tan leve me tomo mucho tiempo) después de actualizar e importar el nuevo JSON, tuve que instalar SPRING SECURITY configurar el acceso y luego comenzar hacer pruebas con POSTMAN al token generado en Keycloak. Por ultimo, tuve que comprender en mayor profundidad como se comporta el frontend al momento de guardar un Token en LocalStorage y ser usado correctamente
 
+---
 
-=======
 # Prueba Técnica - Desarrollador Java
 
 Muchas gracias por la oportunidad y por este desafío como desarrollador junior. Adjunto toda la información relacionada al proyecto, así como la guía para su ejecución y pruebas.
