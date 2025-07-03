@@ -82,12 +82,12 @@ Keycloak en http://host.docker.internal:8180
 
 Backend Spring Boot en http://localhost:8080
 
-Frontend Angularen http://localhost:4200
+Frontend Angular en http://localhost:4200 <- acá
 
 ```
 
 Credenciales. 
-Para iniciar sesión se tiene que usar nombre "usuario" y clave "usuario".
+Para iniciar sesión usar -> nombre "usuario" y clave "usuario".
 
 
 ## TEST EJECUTADOS FRONTEND
